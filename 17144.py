@@ -8,34 +8,37 @@ cleaner = []
 dust = []
 
 def dust_check(map):
+    dust = []
+    for i in range(r):
+        for j in range(c):
+            if map[i][j] >= 5:
+                dust.append([i, j])
+    return dust
+
+def dust_print(map):
     answ = 0
     for i in range(r):
         for j in range(c):
-            if map[i][j] != 0 and map[i][j] != -1:
+            if map[i][j] > 0:
                 answ += map[i][j]
-    return answ
+    return answ 
 
 def spread(map, dust):
+    dust = dust_check(map)
     plus = []
     for i in range(len(dust)):
         cnt = 0
-        if map[dust[i][0]][dust[i][1]] // 5 == 0:
-            continue
-        for x, y in move:
-            if 0 <= x+dust[i][0] < r and 0 <= y+dust[i][1] < c and map[x+dust[i][0]][y+dust[i][1]] != -1:
-                cnt += 1
-                plus.append([x+dust[i][0], y+dust[i][1], map[dust[i][0]][dust[i][1]] // 5])
-                # if map[dust[i][0]][dust[i][1]] // 5 >= 5:
-                #     dust.append([x+dust[i][0], y+dust[i][1]])
+        if map[dust[i][0]][dust[i][1]] // 5:
+            for x, y in move:
+                if 0 <= x+dust[i][0] < r and 0 <= y+dust[i][1] < c and map[x+dust[i][0]][y+dust[i][1]] != -1:
+                    cnt += 1
+                    plus.append([x+dust[i][0], y+dust[i][1], map[dust[i][0]][dust[i][1]] // 5]) # [x, y퍼질 미세먼지의 양]
 
-        map[dust[i][0]][dust[i][1]] -= (map[dust[i][0]][dust[i][1]] // 5)*cnt
+        plus.append([dust[i][0], dust[i][1], -(map[dust[i][0]][dust[i][1]] // 5)*cnt])
 
+    # 확산된 미세먼지는, 모든 위치에서의 확산이 끝나고 더함
     for i, j, num in plus:
         map[i][j] += num
-        if map[i][j] >= 5:
-            dust.append([i, j])
-    
-    return dust
 
 def clean(map, cleaner):
     up, down = cleaner[0], cleaner[1]
@@ -63,25 +66,14 @@ for i in range(r):
     ex = list(map(int, input().split()))
     for j in range(c):
         if ex[j] == -1:
-            cleaner.append([i, j])
-        elif ex[j] != 0:
-            dust.append([i, j])
-    maze.append(ex)
-
-# if t > 2*c + 2*r + 5:
-#     for _ in range(2*c + 2*r + 5):
-#         ex = spread(maze, dust)
-#         dust = ex
-#         clean(maze, cleaner)
-#     print(dust_check(maze))
-#     quit()
+            cleaner.append([i, j])  # 청소기 위치
+        elif ex[j] >= 5:
+            dust.append([i, j])  # 확산될 수 있는 먼지 위치
+    maze.append(ex)  # 현재 보드판 생성
 
 for _ in range(t):
     ex = spread(maze, dust)
-    # print(maze)
     clean(maze, cleaner)
-    # print()
-    # print(maze)
-    dust = ex
+    dust = dust_check(maze)
 
-print(dust_check(maze))
+print(dust_print(maze))

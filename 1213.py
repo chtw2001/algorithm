@@ -1,3 +1,4 @@
+# 홀수는 1개까지 가능, 짝수는 많아도 상관없음. 
 n = input()
 dict = {}
 for i in range(26):
@@ -17,17 +18,17 @@ for i in dict.keys():
                 print("I'm Sorry Hansoo")
                 quit()
             odd += 1
-            if dict[i] >= 3:
+            if dict[i] >= 3:            # 홀수가 있으면 추가
                 answ += i*(dict[i]//2)
             ex = i
             continue
         even += 1
         answ += i*(dict[i]//2)
 
-if odd:
+if odd: # 홀수가 있으면
     new = ''
     new += answ
-    new += ex
+    new += ex           # 가운데에 홀수 알파벳 추가
     new += answ[::-1]
     print(new)
 else:
