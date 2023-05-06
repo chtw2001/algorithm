@@ -19,10 +19,10 @@ for i in range(n):
         num = check(m, num)
         if num in global_set:
             break
-    if num in global_set:
+    if num in global_set:       # 합집합
         global_set = global_set.union(local_set)
         continue
-    else:
+    else:                       # 합집합
         global_set = global_set.union(local_set)
         cnt += 1
     
