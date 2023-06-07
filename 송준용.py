@@ -1,6 +1,8 @@
 from collections import defaultdict
 #ㅗ라ㅓㄴ오라ㅣㅁㄴㅇㄹㄴㅇㅁㄹㅁㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹㅁㄴㅇㄹ
 #edit text
+#edit text
+#ㅈ다ㅓㅣㅂ지ㅏㄷㅈ버ㅏㅣ
 #dhsflhadfk;jsaf;
 class Car:
     #인잇 = 생성자 - 클래스를 바탕으로 객체를 만든다. 밑작업.
