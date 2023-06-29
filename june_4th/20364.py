@@ -8,9 +8,9 @@ for _ in range(d):
 
 q = [0]*(n+1)
 
-for i in d_want:
+for i in d_want: # 200,000
     ex = i
-    while not q[ex]:
+    while not q[ex]: # 모든 높이를 탐색 (20)
         ex = ex // 2
         if not ex:
             q[i] = 1
@@ -18,7 +18,7 @@ for i in d_want:
             break
     if ex:
         exex = ex
-        while ex:
+        while ex:   # 모든 높이를 탐색 (20)
             if q[ex]:
                 exex = ex
             ex = ex // 2
