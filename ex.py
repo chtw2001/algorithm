@@ -18,5 +18,5 @@ from itertools import combinations
 #         i += 1
 #     print(f"Case {case}: {cnt}")
 #     case += 1
-a = defaultdict(float)
-print(a['1'])
+a = list(map(int, input().strip()))
+print(a)
