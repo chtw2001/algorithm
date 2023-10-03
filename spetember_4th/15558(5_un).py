@@ -10,4 +10,4 @@ def dfs(idx):
         quit()
 
 for time in range(N):
-    
+    pass
