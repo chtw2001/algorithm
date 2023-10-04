@@ -22,3 +22,4 @@ a = 6
 b = bin(a)[2:][::-1]
 p = [idx for idx, digit in enumerate(b) if digit == '1']
 print(p)
+
