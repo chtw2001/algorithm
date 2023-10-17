@@ -31,4 +31,4 @@ for tc in range(1, TC+1):
         print(f'Case {tc}: {pop(q)}')
     else:
         print(f'Case {tc}: IMPOSSIBLE')
-    
+    # O(2^20) ~= 10^6

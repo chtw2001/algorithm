@@ -16,7 +16,7 @@ while TC > 0:
     flag = 0
     answ = 0
     while q:
-        answ += 2*pow(-pop(q), t)
+        answ += 2*pow(-pop(q), t) # 무조건 싼거부터 사는게 좋음
         if answ > money:
             print('Too expensive')
             flag = 1
