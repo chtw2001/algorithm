@@ -1,3 +1,4 @@
+# set => list
 import sys
 input = sys.stdin.readline
 
@@ -17,11 +18,18 @@ for i in range(N):
 answ = sys.maxsize
 def cal_cost(_list, p): # 이미 구매한 물약, 현재 구매할 물약 번호
     ex = 0
-    for i in _list:
+    for i in range(N):
+        if not _list[i]:
+            continue
         try:
             ex += sale_info[i][p]
         except:
             pass
+    # for i in _list:
+    #     try:
+    #         ex += sale_info[i][p]
+    #     except:
+    #         pass
     
     return max(1, potion[p] - ex)
     
@@ -34,14 +42,21 @@ def check(_list, cost, depth): # 이미 구매한 물약, 비용, 재귀 층
         answ = min(answ, cost)
         return
     for i in range(N):
-        if i in _list:
+        # if i in _list:
+        #     continue
+        if _list[i]:
             continue
-        _list.add(i)
+        # _list.add(i)
+        _list[i] = True
         ex = cal_cost(_list, i)
         check(_list, cost + ex, depth+1)
-        _list.discard(i)
+        # _list.discard(i)
+        _list[i] = False
 
 for i in range(N):
-    check({i}, potion[i], 0)
+    # check({i}, potion[i], 0)
+    list = [False]*N
+    list[i] = True
+    check(list, potion[i], 0)
 
 print(answ)
