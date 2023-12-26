@@ -1,1 +1,1 @@
-# BOJ algorithm
+# algorithm study record
