@@ -1,3 +1,4 @@
+# union find로 해결해보기.
 import sys
 from collections import defaultdict
 input = sys.stdin.readline
