@@ -1,3 +1,4 @@
+# 1번
 b_year, b_month, b_day = map(int, input().split())
 set_year, set_month, set_day = map(int, input().split())
 
