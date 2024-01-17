@@ -1,6 +1,6 @@
 # 4번
-N, K, M = map(int, input().split())
-ary = [int(input()) for _ in range(N)]
+N, K, M = map(int, input().split()) # N <= 10^6
+ary = [int(input()) for _ in range(N)] # 김밥의 길이를 담아놓은 배열. 각 원소 <= 10^9
 array = []
 max_length = -1
 

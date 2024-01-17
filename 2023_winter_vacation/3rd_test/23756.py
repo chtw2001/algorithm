@@ -2,7 +2,7 @@
 import sys
 input = sys.stdin.readline
 
-N = int(input())
+N = int(input()) # <= 100
 init = int(input())
 ary = [int(input()) for _ in range(N)]
 
