@@ -1,3 +1,4 @@
+# 중앙값 찾기
 from heapq import heappush as push, heappop as pop
 import sys
 

@@ -1,3 +1,4 @@
+# 접두사 찾기 (깡)
 import sys
 input = sys.stdin.readline
 
