@@ -1,3 +1,4 @@
+# 3번
 # 접두사 찾기 (이분탐색)
 import sys
 input = sys.stdin.readline

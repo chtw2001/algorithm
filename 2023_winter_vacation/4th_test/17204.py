@@ -1,3 +1,5 @@
+# 2번
+# 죽음의 게임
 import sys
 input = sys.stdin.readline
 
