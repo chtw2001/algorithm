@@ -1,35 +1,45 @@
 # 4번 서울의 지하철
 
-from collections import defaultdict
+from collections import deque, defaultdict
 import sys
 input = sys.stdin.readline
 N = int(input())
+train = dict()
 station = defaultdict(list)
-train = defaultdict(list)
+start_point = []
+visited = [0]*(N+1)
 
-for train_ in range(1, N+1):
-    ex = list(map(int, input().split()))
-    train[train_] = ex # [num, s1, s2, s3...]
-    for station_ in ex[1:]:
-        station[station_].append(train_)
-
-
+for i in range(1, N+1):
+    train[i] = list(map(int, input().split()))
+    if 0 in train[i]:
+        start_point.append(i)
+    elif len(train[i][1:]) != len(set(train[i][1:])):
+        continue # cycle
+    
+    for j in range(train[i][0]):
+        station[train[i][j+1]].append(i)
+        
 destination = int(input())
-t_visited = [0]*(N+1)
+
+q = deque()
+for t_ in start_point:
+    visited[t_] = 1
+    for s_ in train[t_][1:]:
+        q.append((s_, 0))
 
 
-def dfs(t, s, cnt, s_cnt):
+while q:
+    s, cnt = q.popleft()
     if s == destination:
         print(cnt)
         quit()
-    t_visited[t] = 1
-    for s_ in train[t][1+s_cnt:]:
-        if s_ != s:
-            dfs(t, s_, cnt, s_cnt+1)
     
     for t_ in station[s]:
-        if not t_visited[t_]:
-            dfs(t_, s, cnt+1, 0)
+        if visited[t_]:
+            continue
+        for s_ in train[t_][1:]: 
+            q.append((s_, cnt+1)) 
+        
+        visited[t_] = 1
 
-dfs(station[0][0], 0, 0, 0)
 print(-1)
