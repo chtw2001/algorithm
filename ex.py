@@ -12,5 +12,5 @@
 
 # 4번
 
-a = int("inf") -1
-print(a)
+for i in range(1, 1):
+    print(i)
