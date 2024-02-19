@@ -12,5 +12,12 @@
 
 # 4번
 
-for i in range(1, 1):
-    print(i)
+a = set()
+a.add(1)
+b = set()
+b.add(2)
+c = set()
+c.add(3)
+c.add(2)
+c = c.union(b)
+print(c)

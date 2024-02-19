@@ -1,21 +1,19 @@
 # 4번
+import sys
+input = sys.stdin.readline
 N = int(input())
 string = list(input().rstrip())
-dp = [0]*(N+1)
-order = [0]*(N+1)
+W, WH, WHE, WHEE = 0, 0, 0, 0
 
 for i in range(N):
     if string[i] == 'W':
-        order[i] = 1
+        W += 1
     elif string[i] == 'H':
-        order[i] = 2
+        WH += W
     elif string[i] == 'E':
-        order[i] = 3
-
-
-for i in range(N):
-    for j in range(i):
-        if order[i] and order[i] >= order[j]:
-            dp[i] = max(dp[i], dp[j] + 1)
-
-print(max(dp))
+        WHEE = WHEE*2 # 이전의 WHEE도 정답 가능(유사 휘바람) => 2배로 늘려줌
+        WHEE += WHE  # WHE도 정답 가능(진짜 휘바람)
+        WHEE %= 1000000007
+        WHE += WH # WH는 E를 만났으니 WHE로 만들어줌
+    
+print(WHEE%1000000007)
