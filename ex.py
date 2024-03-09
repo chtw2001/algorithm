@@ -13,11 +13,7 @@
 # 4번
 
 a = set()
-a.add(1)
-b = set()
-b.add(2)
-c = set()
-c.add(3)
-c.add(2)
-c = c.union(b)
-print(c)
+a.add((1, 2))
+a.add((2,3))
+for i, j in a:
+    print(i, j)

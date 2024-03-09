@@ -17,7 +17,7 @@ for k in range(1, N):
                 way[i][j] = 1
 
 for k in range(1, N):
-    if way[1][k] and way[k][k]: # 1부터 출발해서 k를 거친 노드가 k로 가는 경우
+    if way[1][k] and way[k][k]: # 1이 k로 갈 수 있으면서, 순환이 있는 경우
         print('CYCLE')
         quit()
         
